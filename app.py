@@ -2,11 +2,26 @@ import streamlit as st
 import re
 import random
 
-# 1. Page Configuration
-st.set_page_config(page_title="The Stealth Federal Decoder", page_icon="🏦", layout="wide")
+# 1. Page Configuration (Clean Title for Chrome Tab & Optimized for SEO)
+st.set_page_config(
+    page_title="Federal Jargon Decoder | RFP & SOW Translator | AEC & IT Procurement",
+    page_icon="🕵️‍♂️",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': None,
+        'Report a bug': None,
+        'About': """
+        ### Federal Jargon Decoder
+        The ultimate professional tool for decoding dry **Federal Contracting, AEC, and IT procurement jargon**. 
+        Perfect for **Business Development Managers**, **Proposal Writers**, and **Project Engineers** who need to translate **RFP, SOW, and SAM.gov** requirements into the 'Unfiltered Truth.'
+        
+        Stop guessing what 'Best Value' means and start winning more work with a 5-second sanity check.
+        """
+    }
+)
 
 # 2. THE MASSIVE 500+ TERM DICTIONARY
-# Organized to catch everything from the field office to the server room.
 mega_logic = {
     # --- Federal Procurement & BD ---
     "best value": "Picking our friends, but making it look legal",
@@ -72,7 +87,11 @@ mega_logic = {
     "authority to operate": "The golden ticket that says we're allowed to turn the computer on",
     "incident response": "The panic plan for when everything gets hacked",
     "penetration testing": "Hiring a professional to break into our own house",
+    "software as a service": "Renting a program instead of owning it",
+    "multi-factor authentication": "The annoying text message you need to log in",
+    "ransomware": "When the hackers lock the door and keep the key",
     "legacy system": "A computer from 1998 that runs the entire agency",
+    "user experience": "How much the customer hates using our software",
     "agile development": "Making it up as we go along in two-week chunks",
     "blockchain": "A very expensive and complicated digital receipt",
     "latency": "The annoying delay when you're trying to click something",
@@ -185,20 +204,19 @@ pro_tips = [
     "PRO-TIP: Always check the 'option years' before celebrating a contract win."
 ]
 
-# 4. Sidebar (Stealth Professional Branding)
+# 4. Sidebar (Professional Branding)
 with st.sidebar:
     st.header("App Factory Status")
     st.success(f"Dictionary Size: {len(mega_logic)} Terms")
     st.divider()
     st.write("If this tool saved your proposal or your sanity, consider supporting the mission!")
-    # YOUR NEW STEALTH LINK INSTALLED BELOW:
     st.link_button("☕ Support the Factory", "https://buymeacoffee.com/the_niche_decoder")
     st.divider()
-    st.caption("v5.2 - The 'Stealth Professional' Update")
+    st.caption("v5.3 - Professional SEO Update")
     st.caption("Built for Federal Contracting Professionals.")
 
 # 5. The Main Interface
-st.title("🏦 The Stealth Federal Decoder: 500+ Edition")
+st.title("🏦 Federal Jargon Decoder")
 st.write("Paste your dry SOW, RFP, or Field Report below to reveal the unfiltered truth.")
 
 user_input = st.text_area("Paste Jargon Here:", height=400, placeholder="The contractor shall perform value engineering during the 60% design phase...")
