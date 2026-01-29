@@ -240,7 +240,7 @@ with st.sidebar:
 
 # 5. Main Interface
 st.title("🕵️‍♂️ Federal Jargon Decoder")
-st.markdown("### Translating AEC, IT, and Environmental RFPs into the Unfiltered Truth.")
+st.markdown("### Translating Federal RFPs into the Unfiltered Truth.")
 
 with st.expander("📖 Getting Started"):
     st.write("1. Copy the text from any dry **SOW, RFP, or Field Report**.")
