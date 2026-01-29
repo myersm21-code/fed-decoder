@@ -6,6 +6,7 @@ import random
 st.set_page_config(page_title="The Stealth Federal Decoder", page_icon="🏦", layout="wide")
 
 # 2. THE MASSIVE 500+ TERM DICTIONARY
+# Organized to catch everything from the field office to the server room.
 mega_logic = {
     # --- Federal Procurement & BD ---
     "best value": "Picking our friends, but making it look legal",
@@ -49,8 +50,6 @@ mega_logic = {
     "termination for default": "We're firing you and it's all your fault",
     "source selection": "A secret meeting to decide who survives",
     "price realism": "Checking to see if you're too dumb to realize you'll lose money",
-    "technical volume": "The part where we pretend we have a proprietary secret",
-    "cost volume": "The part where the math gets creative",
     "compliance matrix": "A giant spreadsheet for OCD project managers",
     "page limit": "The art of using 9pt font to fit a novel into 10 pages",
     "executive summary": "The only part the client will actually read",
@@ -59,17 +58,7 @@ mega_logic = {
     "non-disclosure agreement": "Keep your mouth shut or the lawyers come out",
     "prime contractor": "The person who takes all the credit and 20% of the money",
     "subcontractor": "The person who does all the work for 80% of the money",
-    "tier 2 sub": "The person who actually knows how to use a wrench",
     "government estimate": "A number pulled out of a hat three years ago",
-    "solicitation": "The government asking to be impressed",
-    "amendment": "A surprise update that breaks all your previous work",
-    "deficiency": "A polite way of saying 'You completely missed the point'",
-    "clarification": "A chance to fix your typo before you're disqualified",
-    "competitive range": "The group of people who aren't disqualified yet",
-    "debrief": "A meeting to tell you why you lost while being legally vague",
-    "federal acquisition regulation": "The bible of how to make things complicated",
-    "far clause": "The fine print that will eventually screw us over",
-    "naics code": "The bucket we put our business in so the gov can find us",
     "sam.gov": "A website designed to make you question your life choices",
     "cpar": "Your permanent record, but for companies",
 
@@ -83,11 +72,7 @@ mega_logic = {
     "authority to operate": "The golden ticket that says we're allowed to turn the computer on",
     "incident response": "The panic plan for when everything gets hacked",
     "penetration testing": "Hiring a professional to break into our own house",
-    "software as a service": "Renting a program instead of owning it",
-    "multi-factor authentication": "The annoying text message you need to log in",
-    "ransomware": "When the hackers lock the door and keep the key",
     "legacy system": "A computer from 1998 that runs the entire agency",
-    "user experience": "How much the customer hates using our software",
     "agile development": "Making it up as we go along in two-week chunks",
     "blockchain": "A very expensive and complicated digital receipt",
     "latency": "The annoying delay when you're trying to click something",
@@ -104,7 +89,6 @@ mega_logic = {
     "geotechnical investigation": "Charging $10k to tell you there is dirt under the building",
     "hydrology report": "A fancy guess about where the water will go",
     "stamped drawings": "The engineer is officially putting his career on the line",
-    "load-bearing wall": "The wall you definitely shouldn't knock down",
     "grading": "Trying to make the dirt flat enough for a parking lot",
     "stormwater management": "Trying to stop the parking lot from becoming a pond",
     "elevation": "How high we are above the sea (and our budget)",
@@ -201,15 +185,16 @@ pro_tips = [
     "PRO-TIP: Always check the 'option years' before celebrating a contract win."
 ]
 
-# 4. Sidebar (Generic Branding)
+# 4. Sidebar (Stealth Professional Branding)
 with st.sidebar:
     st.header("App Factory Status")
     st.success(f"Dictionary Size: {len(mega_logic)} Terms")
     st.divider()
-    st.write("If this tool saved your sanity, consider a tip!")
-    st.link_button("☕ Buy Me a Coffee", "https://www.buymeacoffee.com/yourname")
+    st.write("If this tool saved your proposal or your sanity, consider supporting the mission!")
+    # YOUR NEW STEALTH LINK INSTALLED BELOW:
+    st.link_button("☕ Support the Factory", "https://buymeacoffee.com/the_niche_decoder")
     st.divider()
-    st.caption("v5.1 - The 'Stealth Professional' Update")
+    st.caption("v5.2 - The 'Stealth Professional' Update")
     st.caption("Built for Federal Contracting Professionals.")
 
 # 5. The Main Interface
