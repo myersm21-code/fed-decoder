@@ -2,26 +2,58 @@ import streamlit as st
 import re
 import random
 
-# 1. Page Configuration (Clean Title for Chrome Tab & Optimized for SEO)
+# 1. Page Configuration (SEO & Chrome Tab Polish)
 st.set_page_config(
-    page_title="Federal Jargon Decoder | RFP & SOW Translator | AEC & IT Procurement",
+    page_title="Federal Jargon Decoder | RFP & SOW Translator",
     page_icon="🕵️‍♂️",
-    layout="wide",
+    layout="centered", 
     initial_sidebar_state="expanded",
-    menu_items={
-        'Get Help': None,
-        'Report a bug': None,
-        'About': """
-        ### Federal Jargon Decoder
-        The ultimate professional tool for decoding dry **Federal Contracting, AEC, and IT procurement jargon**. 
-        Perfect for **Business Development Managers**, **Proposal Writers**, and **Project Engineers** who need to translate **RFP, SOW, and SAM.gov** requirements into the 'Unfiltered Truth.'
-        
-        Stop guessing what 'Best Value' means and start winning more work with a 5-second sanity check.
-        """
-    }
+    menu_items={'About': "The ultimate professional tool for decoding dry Federal AEC and IT jargon."}
 )
 
-# 2. THE MASSIVE 500+ TERM DICTIONARY
+# 2. CUSTOM CSS (Modern UI Facelift)
+st.markdown("""
+    <style>
+    .main {
+        background-color: #f8f9fa;
+    }
+    .stTextArea textarea {
+        border-radius: 12px;
+        border: 2px solid #dfe3e6;
+        font-size: 16px;
+    }
+    .stButton button {
+        width: 100%;
+        border-radius: 25px;
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+        height: 3.5em;
+        transition: 0.3s;
+    }
+    .stButton button:hover {
+        background-color: #0056b3;
+        border: none;
+    }
+    .decode-box {
+        padding: 25px;
+        border-radius: 15px;
+        background-color: white;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0px 4px 12px rgba(0,0,0,0.05);
+        line-height: 1.6;
+        color: #333;
+    }
+    .sidebar-header {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: #007bff;
+        font-weight: bold;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+# 3. THE 500+ TERM DICTIONARY
+# (Expanded to include Federal BD, IT, Cyber, Construction, Engineering, and Environmental)
 mega_logic = {
     # --- Federal Procurement & BD ---
     "best value": "Picking our friends, but making it look legal",
@@ -194,41 +226,38 @@ mega_logic = {
     "win-win": "A situation where everyone is happy (rarely happens)"
 }
 
-# 3. Dynamic Footer Logic
-pro_tips = [
-    "PRO-TIP: If the IT section mentions 'legacy integration,' the budget is 50% too low.",
-    "PRO-TIP: 'Cybersecurity compliance' is 10% tech and 90% filling out spreadsheets.",
-    "PRO-TIP: If a contractor says the design is '90% done,' they are actually at 40%.",
-    "PRO-TIP: The 'Kickoff Meeting' is where the project manager realizes the scope is impossible.",
-    "PRO-TIP: If the client asks for 'innovation,' they just want it cheaper.",
-    "PRO-TIP: Always check the 'option years' before celebrating a contract win."
-]
-
-# 4. Sidebar (Professional Branding)
+# 4. Sidebar & Tip Jar
 with st.sidebar:
-    st.header("App Factory Status")
-    st.success(f"Dictionary Size: {len(mega_logic)} Terms")
+    st.image("https://img.icons8.com/clouds/200/detective.png", width=120)
+    st.markdown('<p class="sidebar-header">THE NICHE DECODER</p>', unsafe_allow_html=True)
+    st.metric(label="Dictionary Status", value=f"{len(mega_logic)} Terms")
     st.divider()
-    st.write("If this tool saved your proposal or your sanity, consider supporting the mission!")
+    st.write("Supporting the mission to make RFPs readable and proposals winnable.")
+    # UPDATED ANONYMOUS LINK
     st.link_button("☕ Support the Factory", "https://buymeacoffee.com/the_niche_decoder")
     st.divider()
-    st.caption("v5.3 - Professional SEO Update")
-    st.caption("Built for Federal Contracting Professionals.")
+    st.caption("v6.0 - Modern Enterprise UI")
 
-# 5. The Main Interface
-st.title("🏦 Federal Jargon Decoder")
-st.write("Paste your dry SOW, RFP, or Field Report below to reveal the unfiltered truth.")
+# 5. Main Interface
+st.title("🕵️‍♂️ Federal Jargon Decoder")
+st.markdown("### Translating AEC, IT, and Environmental RFPs into the Unfiltered Truth.")
 
-user_input = st.text_area("Paste Jargon Here:", height=400, placeholder="The contractor shall perform value engineering during the 60% design phase...")
+with st.expander("📖 Getting Started"):
+    st.write("1. Copy the text from any dry **SOW, RFP, or Field Report**.")
+    st.write("2. Paste it in the input area below.")
+    st.write("3. Hit the **Decode** button to see what's actually happening.")
 
+# Input Area
+user_input = st.text_area("Paste Jargon Here:", height=280, placeholder="The contractor shall provide multi-disciplinary support for the remedial action phase...")
+
+# Decoding Action
 if st.button("🚀 DECODE THE NONSENSE"):
     if user_input:
         decoded = user_input
         matches_found = 0
         
-        # The Smart Engine Loop (Sorted by length to catch longer phrases first)
+        # Smart Engine (Sorted by length to catch complex phrases like 'Best Value' before 'Value')
         sorted_jargon = sorted(mega_logic.keys(), key=len, reverse=True)
-        
         for jargon in sorted_jargon:
             truth = mega_logic[jargon]
             pattern = re.compile(re.escape(jargon), re.IGNORECASE)
@@ -236,11 +265,28 @@ if st.button("🚀 DECODE THE NONSENSE"):
                 decoded = pattern.sub(f" **[{truth.upper()}]** ", decoded)
                 matches_found += 1
             
-        st.success(f"Decoded {matches_found} industry mysteries!")
-        st.markdown(decoded)
-        
-        # The Dynamic Footer
+        # Display Results
         st.divider()
-        st.info(random.choice(pro_tips))
+        c1, c2 = st.columns([3, 1])
+        with c1:
+            st.success(f"Analysis Complete.")
+        with c2:
+            st.metric("Total Matches", matches_found)
+            
+        # Styled Output Box
+        st.markdown(f'<div class="decode-box">{decoded}</div>', unsafe_allow_html=True)
+        
+        # Random Pro-Tip
+        tips = [
+            "PRO-TIP: If the lab results come back perfect on a Friday, check them again on Monday.",
+            "PRO-TIP: 'Urgent Requirement' usually means someone forgot to file paperwork in October.",
+            "PRO-TIP: If the GC is smiling during a site walk, check the change order logs.",
+            "PRO-TIP: 'Substantial Completion' is code for 'We want our money now.'"
+        ]
+        st.info(random.choice(tips))
     else:
         st.warning("Please paste some text first!")
+
+# 6. Final Disclaimer & Attribution
+st.divider()
+st.caption("Developed by The Niche Decoder Factory. Anonymous & Stealth.")
